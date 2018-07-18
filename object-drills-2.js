@@ -20,3 +20,7 @@ const myObj = {
 for (let key in myObj) {
   console.log(`key: ${key} | value: ${myObj[key]}`);
 }
+const mealObj = {
+  meals : ['breakfast', 'second breakfast', 'elevenses', 'lunch', 'afternoon tea', 'dinner', 'supper']
+}
+console.log(`Hobbit's 4th meal: ${mealObj.meals[3]}`);
