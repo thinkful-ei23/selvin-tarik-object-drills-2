@@ -35,21 +35,27 @@ console.log(`Hobbit's 4th meal: ${mealObj.meals[3]}`);
 
 
 
-//4. Arrays of Objects
+//4. Arrays of Objects + 5. Properties that aren't there
 let charList = [
   {
     name: 'Frodo',
-    jobTitle: 'Hobbit'
+    jobTitle: 'Hobbit', 
   },
   {
     name: 'Legolas',
-    jobTitle: 'Elf'
+    jobTitle: 'Elf',
+    boss: 'Frodo'
   },
   {
     name: 'Gimli',
-    jobTitle: 'Dwarf'
+    jobTitle: 'Dwarf',
+    boss: 'Frodo'
   }];
 
 charList.forEach(char => {
-  console.log(`Name: ${char['name']}; Job Title: ${char['jobTitle']}`);
+  if (char['boss']) {
+    console.log(`${char['jobTitle']} ${char['name']} reports to ${char['boss']}.`);
+  } else {
+    console.log(`${char['jobTitle']} ${char['name']} doesn't report to anybody.`);
+  }
 });
