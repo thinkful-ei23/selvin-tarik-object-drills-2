@@ -59,3 +59,36 @@ charList.forEach(char => {
     console.log(`${char['jobTitle']} ${char['name']} doesn't report to anybody.`);
   }
 });
+
+//6. Cracking the code  
+
+const encWord = 'craft block argon meter bells brown croon droop';
+const cipher = {
+  a: 2,
+  b: 3,
+  c: 4,
+  d: 5
+} 
+let charPos;
+function decode(str) {
+  if (cipher[str[0]]){
+    charPos = cipher[str[0]];
+    return str[charPos - 1];
+  } else {
+    return ' '; //return decoded letter
+  }
+}
+
+function decodeWords(string){
+  let strArr = string.split(' ');
+  let decodedMsg = '';
+  strArr.forEach(word => {
+    decodedMsg += decode(word);
+  });
+  return decodedMsg;
+}
+console.log(decodeWords(encWord));
+
+
+//7. Factory Functions with LOTR
+
