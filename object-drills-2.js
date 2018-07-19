@@ -92,3 +92,55 @@ console.log(decodeWords(encWord));
 
 //7. Factory Functions with LOTR
 
+function createCharacter(name, nickname, race, origin, attack, defense, weapon) {
+  return {
+    name: name,
+    nickname: nickname,
+    race: race,
+    origin: origin,
+    attack: attack,
+    defense: defense,
+    weapon: weapon,
+    describe: function(){
+      console.log(`${name} is a ${race} of ${origin} who uses ${weapon}`);  
+    },
+    evaluateFight: function(character){
+      let x = this.attack - character.defense;
+      let y = character.attack - this.defense;
+      if (x < 0 ) {
+        x = 0;
+      };
+      if (y < 0 ) {
+        y = 0;
+      };
+      console.log(`Your opponent takes ${x} damage and you receive ${y} damage`);  
+    }
+  }
+}
+
+let characters = [
+  new createCharacter('Gandalf the White', 'gandalf', 'Wizard', 'Middle Earth', 10, 6, 'a wizard staff'),
+  new createCharacter('Bilbo Baggins', 'bilbo', 'Hobbit', 'The Shire', 2, 1, 'the Ring'),
+  new createCharacter('Frodo Baggins', 'frodo', 'Hobbit', 'The Shire', 2, 1, 'Sting and Barrow Blade'),
+  new createCharacter('Aragorn son of Arathorn', 'aragorn', 'Man', 'Dunnedain', 6, 8, 'Anduril'),
+  new createCharacter('Legolas', 'legolas', 'Elf', 'Woodland Realm', 8, 5, 'Bow and Arrow')
+];
+
+characters.push(new createCharacter('Arwen Undomiel', 'arwen', 'Half-Elf', 'Rivendell', 10, 3, 'Hadhafang'));
+characters.find(function(element) {
+  if (element.nickname === 'aragorn') {
+    element.describe();
+  }
+});
+
+const hobbits = characters.filter(function(char) {
+  if (char.race === 'Hobbit') {
+    return char;
+  }
+});
+
+const strongChar = characters.filter(function(char) {
+  if (char.attack > 5) {
+    return char;
+  }
+});
